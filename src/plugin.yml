@@ -3,3 +3,4 @@ main: net.mcrafter.survival.Survival
 version: 1.0
 description: improved survival difficulty
 author: mcrafter
+depend: [EnchantmentAPI]

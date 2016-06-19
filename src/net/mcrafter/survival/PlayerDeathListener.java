@@ -1,6 +1,9 @@
 package net.mcrafter.survival;
 
+import com.rit.sucy.CustomEnchantment;
+import com.rit.sucy.EnchantmentAPI;
 import org.bukkit.Bukkit;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,11 +14,10 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Stack;
 
-public class PlayerDeathListener implements Listener
-{
+public class PlayerDeathListener implements Listener {
     @EventHandler
-    public void onPlayerDeath(PlayerDeathEvent p_event)
-    {
+    public void onPlayerDeath(PlayerDeathEvent p_event) {
+        Bukkit.getLogger().info("Player dead.");
         Player l_player = p_event.getEntity();
 
         p_event.setKeepInventory(true);
@@ -24,23 +26,24 @@ public class PlayerDeathListener implements Listener
         ClearInventory(l_player);
     }
 
-    private void ClearInventory(Player p_player)
-    {
+    private void ClearInventory(Player p_player) {
         Stack<ItemStack> l_saved = new Stack<>();
 
         for (ItemStack l_item : p_player.getInventory())
         {
             if (l_item != null)
             {
-                try
+                int l_level = EnchantmentAPI.getItemEnchantmentLevel(l_item, "Immortal");
+
+                if (l_level > 0)
                 {
-                    if (l_item.getEnchantments().containsKey(Survival.immortalEnchantment))
-                        l_saved.add(new ItemStack(l_item));
+                    l_level--;
+                    EnchantmentAPI.removeEnchantments(l_item);
+
+                    if (l_level > 0)
+                        EnchantmentAPI.getEnchantment("Immortal").addToItem(l_item, l_level);
                 }
-                catch(Exception e)
-                {
-                    l_saved.add(new ItemStack(l_item));
-                }
+                l_saved.add(new ItemStack(l_item));
             }
         }
 

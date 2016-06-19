@@ -1,5 +1,6 @@
 package net.mcrafter.survival;
 
+import com.rit.sucy.EnchantmentAPI;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.*;
@@ -55,12 +56,7 @@ class RecipeLoader
     {
         ItemStack l_drop = new ItemStack(l_item);
 
-        l_drop.addUnsafeEnchantment(Survival.immortalEnchantment, 4);
-        ItemMeta l_meta = l_drop.getItemMeta();
-
-        l_meta.addEnchant(Survival.immortalEnchantment, 4, true);
-        l_meta.setDisplayName("Immortal " + l_name);
-        l_drop.setItemMeta(l_meta);
+        EnchantmentAPI.getEnchantment("Immortal").addToItem(l_drop, 5);
 
         ShapedRecipe l_recipe = new ShapedRecipe(l_drop);
 

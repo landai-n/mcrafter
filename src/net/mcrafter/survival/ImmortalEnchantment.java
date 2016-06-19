@@ -1,44 +1,29 @@
 
 package net.mcrafter.survival;
 
+import com.rit.sucy.CustomEnchantment;
+import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.inventory.ItemStack;
 
-public class ImmortalEnchantment extends Enchantment {
+public class ImmortalEnchantment extends CustomEnchantment
+{
+    static Material l_applyTo[] = {
+            Material.DIAMOND_SWORD,
+            Material.DIAMOND_AXE,
+            Material.DIAMOND_HOE,
+            Material.DIAMOND_SPADE,
+            Material.DIAMOND_PICKAXE
+            };
 
-    public ImmortalEnchantment(int id) {
-        super(id);
-    }
+    public ImmortalEnchantment()
+    {
+        super("Immortal", l_applyTo);
 
-    @Override
-    public boolean canEnchantItem(ItemStack item) {
-        return true;
-    }
-
-    @Override
-    public boolean conflictsWith(Enchantment other) {
-        return false;
-    }
-
-    @Override
-    public EnchantmentTarget getItemTarget() {
-        return null;
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 5;
-    }
-
-    @Override
-    public String getName() {
-        return "Immortal";
-    }
-
-    @Override
-    public int getStartLevel() {
-        return 5;
+        max = 5;
+        base = 5;
+        this.interval = 5;
     }
 
 }
