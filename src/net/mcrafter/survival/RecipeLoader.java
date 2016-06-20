@@ -21,51 +21,39 @@ class RecipeLoader
         SetFurnaceRecipe(Material.LOG, Material.AIR);
         SetFurnaceRecipe(Material.LOG_2, Material.AIR);
 
-        AddImmortalCraft(Material.DIAMOND_SWORD);
-        AddImmortalCraft(Material.DIAMOND_AXE);
-        AddImmortalCraft(Material.DIAMOND_HOE);
-        AddImmortalCraft(Material.DIAMOND_PICKAXE);
-        AddImmortalCraft(Material.DIAMOND_SPADE);
-        AddImmortalCraft(Material.FISHING_ROD);
-
-        AddImmortalCraft(Material.IRON_SWORD);
-        AddImmortalCraft(Material.IRON_AXE);
-        AddImmortalCraft(Material.IRON_HOE);
-        AddImmortalCraft(Material.IRON_PICKAXE);
-        AddImmortalCraft(Material.IRON_SPADE);
-
-        AddImmortalCraft(Material.BOW);
-
-        AddImmortalCraft(Material.DIAMOND_CHESTPLATE);
-        AddImmortalCraft(Material.DIAMOND_LEGGINGS);
-        AddImmortalCraft(Material.DIAMOND_HELMET);
-        AddImmortalCraft(Material.DIAMOND_BOOTS);
-
-        AddImmortalCraft(Material.IRON_CHESTPLATE);
-        AddImmortalCraft(Material.IRON_LEGGINGS);
-        AddImmortalCraft(Material.IRON_HELMET);
-        AddImmortalCraft(Material.IRON_BOOTS);
-
-        AddImmortalCraft(Material.CHAINMAIL_CHESTPLATE);
-        AddImmortalCraft(Material.CHAINMAIL_LEGGINGS);
-        AddImmortalCraft(Material.CHAINMAIL_HELMET);
-        AddImmortalCraft(Material.CHAINMAIL_BOOTS);
-
-        AddImmortalCraft(Material.ELYTRA);
+        LoadStuffUncrafts();
     }
 
-    private void AddImmortalCraft(Material l_item)
+    private void LoadStuffUncrafts()
     {
-        ItemStack l_drop = new ItemStack(l_item);
+        AddShapelessCraftRecipe(Material.DIAMOND_SWORD, Material.DIAMOND, 1);
+        AddShapelessCraftRecipe(Material.DIAMOND_AXE, Material.DIAMOND, 1);
+        AddShapelessCraftRecipe(Material.DIAMOND_HOE, Material.DIAMOND, 1);
+        AddShapelessCraftRecipe(Material.DIAMOND_PICKAXE, Material.DIAMOND, 1);
+        AddShapelessCraftRecipe(Material.DIAMOND_SPADE, Material.DIAMOND, 1);
 
-        EnchantmentAPI.getEnchantment("Immortal").addToItem(l_drop, 5);
+        AddShapelessCraftRecipe(Material.IRON_SWORD, Material.IRON_INGOT, 1);
+        AddShapelessCraftRecipe(Material.IRON_AXE, Material.IRON_INGOT, 1);
+        AddShapelessCraftRecipe(Material.IRON_HOE, Material.IRON_INGOT, 1);
+        AddShapelessCraftRecipe(Material.IRON_PICKAXE, Material.IRON_INGOT, 1);
+        AddShapelessCraftRecipe(Material.IRON_SPADE, Material.IRON_INGOT, 1);
 
-        ShapedRecipe l_recipe = new ShapedRecipe(l_drop);
+        AddShapelessCraftRecipe(Material.DIAMOND_CHESTPLATE, Material.DIAMOND, 3);
+        AddShapelessCraftRecipe(Material.DIAMOND_LEGGINGS, Material.DIAMOND, 2);
+        AddShapelessCraftRecipe(Material.DIAMOND_HELMET, Material.DIAMOND, 2);
+        AddShapelessCraftRecipe(Material.DIAMOND_BOOTS, Material.DIAMOND, 1);
 
-        l_recipe.shape("xxx", "xox", "xxx");
-        l_recipe.setIngredient('x', Material.EMERALD_BLOCK);
-        l_recipe.setIngredient('o', l_item);
+        AddShapelessCraftRecipe(Material.IRON_CHESTPLATE, Material.IRON_INGOT, 3);
+        AddShapelessCraftRecipe(Material.IRON_LEGGINGS, Material.IRON_INGOT, 2);
+        AddShapelessCraftRecipe(Material.IRON_HELMET, Material.IRON_INGOT, 2);
+        AddShapelessCraftRecipe(Material.IRON_BOOTS, Material.IRON_INGOT, 1);
+    }
 
+    private void AddShapelessCraftRecipe(Material p_input, Material p_output, int p_outputNb)
+    {
+        ShapelessRecipe l_recipe = new ShapelessRecipe(new ItemStack(p_output, p_outputNb));
+
+        l_recipe.addIngredient(p_input);
         m_plugin.getServer().addRecipe(l_recipe);
     }
 
