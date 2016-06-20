@@ -42,8 +42,8 @@ public class ImmortalEnchantment extends CustomEnchantment
         super("Immortal", l_applyTo);
 
         max = 5;
-        base = 5;
-        this.interval = 10;
+        base = 10;
+        this.interval = 8;
     }
 
 }
