@@ -42,8 +42,8 @@ public class PlayerDeathListener implements Listener {
 
                     if (l_level > 0)
                         EnchantmentAPI.getEnchantment("Immortal").addToItem(l_item, l_level);
+                    l_saved.add(new ItemStack(l_item));
                 }
-                l_saved.add(new ItemStack(l_item));
             }
         }
 

@@ -21,38 +21,40 @@ class RecipeLoader
         SetFurnaceRecipe(Material.LOG, Material.AIR);
         SetFurnaceRecipe(Material.LOG_2, Material.AIR);
 
-        AddImmortalCraft(Material.DIAMOND_SWORD, "Diamond Sword");
-        AddImmortalCraft(Material.DIAMOND_AXE, "Diamond Axe");
-        AddImmortalCraft(Material.DIAMOND_HOE, "Diamond Hoe");
-        AddImmortalCraft(Material.DIAMOND_PICKAXE, "Diamond Pickaxe");
-        AddImmortalCraft(Material.DIAMOND_SPADE, "Diamond Shovel");
-        AddImmortalCraft(Material.FISHING_ROD, "Fishing Rod");
+        AddImmortalCraft(Material.DIAMOND_SWORD);
+        AddImmortalCraft(Material.DIAMOND_AXE);
+        AddImmortalCraft(Material.DIAMOND_HOE);
+        AddImmortalCraft(Material.DIAMOND_PICKAXE);
+        AddImmortalCraft(Material.DIAMOND_SPADE);
+        AddImmortalCraft(Material.FISHING_ROD);
 
-        AddImmortalCraft(Material.IRON_SWORD, "Iron Sword");
-        AddImmortalCraft(Material.IRON_AXE, "Iron Axe");
-        AddImmortalCraft(Material.IRON_HOE, "Iron Hoe");
-        AddImmortalCraft(Material.IRON_PICKAXE, "Iron Pickaxe");
-        AddImmortalCraft(Material.IRON_SPADE, "Iron Shovel");
+        AddImmortalCraft(Material.IRON_SWORD);
+        AddImmortalCraft(Material.IRON_AXE);
+        AddImmortalCraft(Material.IRON_HOE);
+        AddImmortalCraft(Material.IRON_PICKAXE);
+        AddImmortalCraft(Material.IRON_SPADE);
 
-        AddImmortalCraft(Material.BOW, "Bow");
+        AddImmortalCraft(Material.BOW);
 
-        AddImmortalCraft(Material.DIAMOND_CHESTPLATE, "Diamond Chestplate");
-        AddImmortalCraft(Material.DIAMOND_LEGGINGS, "Diamond Leggings");
-        AddImmortalCraft(Material.DIAMOND_HELMET, "Diamond Helmet");
-        AddImmortalCraft(Material.DIAMOND_BOOTS, "Diamond Boots");
+        AddImmortalCraft(Material.DIAMOND_CHESTPLATE);
+        AddImmortalCraft(Material.DIAMOND_LEGGINGS);
+        AddImmortalCraft(Material.DIAMOND_HELMET);
+        AddImmortalCraft(Material.DIAMOND_BOOTS);
 
-        AddImmortalCraft(Material.IRON_CHESTPLATE, "Iron Chestplate");
-        AddImmortalCraft(Material.IRON_LEGGINGS, "Iron Leggings");
-        AddImmortalCraft(Material.IRON_HELMET, "Iron Helmet");
-        AddImmortalCraft(Material.IRON_BOOTS, "Iron Boots");
+        AddImmortalCraft(Material.IRON_CHESTPLATE);
+        AddImmortalCraft(Material.IRON_LEGGINGS);
+        AddImmortalCraft(Material.IRON_HELMET);
+        AddImmortalCraft(Material.IRON_BOOTS);
 
-        AddImmortalCraft(Material.CHAINMAIL_CHESTPLATE, "Chain Chestplate");
-        AddImmortalCraft(Material.CHAINMAIL_LEGGINGS, "Chain Leggings");
-        AddImmortalCraft(Material.CHAINMAIL_HELMET, "Chain Helmet");
-        AddImmortalCraft(Material.CHAINMAIL_BOOTS, "Chain Boots");
+        AddImmortalCraft(Material.CHAINMAIL_CHESTPLATE);
+        AddImmortalCraft(Material.CHAINMAIL_LEGGINGS);
+        AddImmortalCraft(Material.CHAINMAIL_HELMET);
+        AddImmortalCraft(Material.CHAINMAIL_BOOTS);
+
+        AddImmortalCraft(Material.ELYTRA);
     }
 
-    private void AddImmortalCraft(Material l_item, String l_name)
+    private void AddImmortalCraft(Material l_item)
     {
         ItemStack l_drop = new ItemStack(l_item);
 
