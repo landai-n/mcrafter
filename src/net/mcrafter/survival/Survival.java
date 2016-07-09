@@ -3,11 +3,11 @@ package net.mcrafter.survival;
 import com.rit.sucy.EnchantPlugin;
 import com.rit.sucy.EnchantmentAPI;
 import org.bukkit.World;
+import org.bukkit.WorldType;
 
 public class Survival extends EnchantPlugin
 {
     private RecipeLoader m_recipeLoader;
-    static ImmortalEnchantment immortalEnchantment = new ImmortalEnchantment();
 
     public Survival()
     {
@@ -17,17 +17,32 @@ public class Survival extends EnchantPlugin
     @Override
     public void onEnable()
     {
-        EnchantmentAPI.registerCustomEnchantment(immortalEnchantment);
+
+        EnchantmentAPI.registerCustomEnchantment(new ImmortalEnchantment());
+        EnchantmentAPI.registerCustomEnchantment(new ZeusEnchantment());
+        EnchantmentAPI.registerCustomEnchantment(new ExplosiveEnchantment(this));
 
         m_recipeLoader.Load();
 
         for (World l_world : getServer().getWorlds())
-            l_world.setMonsterSpawnLimit(l_world.getMonsterSpawnLimit() * 3);
+            if (l_world.getEnvironment() != World.Environment.THE_END)
+                l_world.setMonsterSpawnLimit(l_world.getMonsterSpawnLimit() * 3);
 
+
+
+        getServer().getPluginManager().registerEvents(new NaturalEventListener(), this);
         getServer().getPluginManager().registerEvents(new MonsterAIListener(), this);
         getServer().getPluginManager().registerEvents(new LootListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
         getServer().getPluginManager().registerEvents(new MonsterDeathListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerDamageListener(), this);
+    }
+
+    @Override
+    public void onDisable()
+    {
+        for (World l_world : getServer().getWorlds())
+            if (l_world.getEnvironment() != World.Environment.THE_END)
+                l_world.setMonsterSpawnLimit(l_world.getMonsterSpawnLimit() / 3);
     }
 }

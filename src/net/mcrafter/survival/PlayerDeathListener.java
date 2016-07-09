@@ -2,19 +2,26 @@ package net.mcrafter.survival;
 
 import com.rit.sucy.CustomEnchantment;
 import com.rit.sucy.EnchantmentAPI;
+import net.minecraft.server.v1_10_R1.PlayerConnection;
 import org.bukkit.Bukkit;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerVelocityEvent;
+import org.bukkit.event.vehicle.VehicleMoveEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.Vector;
 
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Stack;
 
 public class PlayerDeathListener implements Listener {
+
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent p_event) {
         Bukkit.getLogger().info("Player dead.");
@@ -23,6 +30,7 @@ public class PlayerDeathListener implements Listener {
         p_event.setKeepInventory(true);
         l_player.setLevel(0);
         l_player.setTotalExperience(0);
+
         ClearInventory(l_player);
     }
 

@@ -18,7 +18,7 @@ public class MonsterAIListener implements Listener
         if (!Monster.class.isAssignableFrom(l_spawnEvent.getEntity().getClass()))
             return;
         Monster l_monster = (Monster) l_spawnEvent.getEntity();
-        l_monster.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, -1, 4));
+        l_monster.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, -1, 2));
 
         if (l_monster.getType() == EntityType.ZOMBIE)
             TargetNearestPlayer(l_monster, 50);
@@ -31,7 +31,7 @@ public class MonsterAIListener implements Listener
             PigZombie l_pig = (PigZombie)l_monster;
 
             l_pig.setAngry(true);
-            l_pig.setAnger(1000);
+            l_pig.setAnger(10000);
         }
     }
 

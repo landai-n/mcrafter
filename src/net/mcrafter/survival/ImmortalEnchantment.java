@@ -7,9 +7,9 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.inventory.ItemStack;
 
-public class ImmortalEnchantment extends CustomEnchantment
+class ImmortalEnchantment extends CustomEnchantment
 {
-    static Material l_applyTo[] = {
+    private static Material m_applyTo[] = {
             Material.DIAMOND_SWORD,
             Material.DIAMOND_AXE,
             Material.DIAMOND_HOE,
@@ -37,9 +37,9 @@ public class ImmortalEnchantment extends CustomEnchantment
             Material.ELYTRA
             };
 
-    public ImmortalEnchantment()
+    ImmortalEnchantment()
     {
-        super("Immortal", l_applyTo);
+        super("Immortal", m_applyTo);
 
         max = 5;
         base = 10;
