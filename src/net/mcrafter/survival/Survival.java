@@ -21,6 +21,7 @@ public class Survival extends EnchantPlugin
         EnchantmentAPI.registerCustomEnchantment(new ImmortalEnchantment());
         EnchantmentAPI.registerCustomEnchantment(new ZeusEnchantment());
         EnchantmentAPI.registerCustomEnchantment(new ExplosiveEnchantment(this));
+        EnchantmentAPI.registerCustomEnchantment(new FlyEnchantment());
 
         m_recipeLoader.Load();
 
@@ -28,6 +29,7 @@ public class Survival extends EnchantPlugin
             if (l_world.getEnvironment() != World.Environment.THE_END)
                 l_world.setMonsterSpawnLimit(l_world.getMonsterSpawnLimit() * 3);
 
+        getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
         getServer().getPluginManager().registerEvents(new NaturalEventListener(), this);
         getServer().getPluginManager().registerEvents(new MonsterAIListener(), this);
         getServer().getPluginManager().registerEvents(new LootListener(), this);
