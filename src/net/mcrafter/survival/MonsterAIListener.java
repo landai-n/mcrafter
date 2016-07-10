@@ -21,7 +21,7 @@ public class MonsterAIListener implements Listener
         l_monster.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, -1, 2));
 
         if (l_monster.getType() == EntityType.ZOMBIE)
-            TargetNearestPlayer(l_monster, 50);
+            TargetNearestPlayer(l_monster, 70);
         else if (l_monster.getType() == EntityType.SPIDER)
             TargetNearestPlayer(l_monster, 50);
         else if (l_monster.getType() == EntityType.SKELETON)
