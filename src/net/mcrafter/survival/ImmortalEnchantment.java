@@ -34,7 +34,8 @@ class ImmortalEnchantment extends CustomEnchantment
             Material.CHAINMAIL_LEGGINGS,
             Material.CHAINMAIL_HELMET,
             Material.CHAINMAIL_BOOTS,
-            Material.ELYTRA
+            Material.ELYTRA,
+            Material.SHIELD
             };
 
     ImmortalEnchantment()

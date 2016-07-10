@@ -22,6 +22,7 @@ public class Survival extends EnchantPlugin
         EnchantmentAPI.registerCustomEnchantment(new ImmortalEnchantment());
         EnchantmentAPI.registerCustomEnchantment(new ZeusEnchantment());
         EnchantmentAPI.registerCustomEnchantment(new ExplosiveEnchantment(this));
+        EnchantmentAPI.registerCustomEnchantment(new TimeEnchantment(this));
         EnchantmentAPI.registerCustomEnchantment(new FlyEnchantment());
 
         m_recipeLoader.Load();
