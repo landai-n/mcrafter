@@ -16,7 +16,8 @@ import java.lang.reflect.Field;
 
 public class CustomSpawner implements Listener
 {
-    public boolean m_spawn = false;
+    private static boolean m_spawn = false;
+
     @EventHandler (priority = EventPriority.HIGHEST)
     public void onCreatureSpawn(CreatureSpawnEvent p_spawnEvent)
     {
@@ -25,30 +26,34 @@ public class CustomSpawner implements Listener
             m_spawn = false;
             return;
         }
-        Class<? extends EntityInsentient> l_customClass = CustomCreature.GetCustomClass(p_spawnEvent.getEntityType());
+        Spawn(p_spawnEvent.getEntityType(), p_spawnEvent.getLocation());
+        p_spawnEvent.getEntity().remove();
+    }
 
-        if (l_customClass == null)
-            return;
-
+    public static Entity Spawn(EntityType p_type, Location p_location)
+    {
         try
         {
-            LivingEntity l_baseEntity = p_spawnEvent.getEntity();
-            Location l_location = l_baseEntity.getLocation();
-            CraftWorld l_craftWorld = (CraftWorld) l_baseEntity.getWorld();
+            Class<? extends EntityInsentient> l_customClass = CustomCreature.GetCustomClass(p_type);
+
+            if (l_customClass == null)
+                return null;
+
+            CraftWorld l_craftWorld = (CraftWorld) p_location.getWorld();
             WorldServer l_world = l_craftWorld.getHandle();
             Entity l_customEntity;
 
             l_customEntity = l_customClass.getDeclaredConstructor(World.class).newInstance(l_world);
 
-
-            l_baseEntity.remove();
-            l_customEntity.setLocation(l_location.getX(), l_location.getY(), l_location.getZ(), l_location.getYaw(), l_location.getPitch());
+            l_customEntity.setLocation(p_location.getX(), p_location.getY(), p_location.getZ(), p_location.getYaw(), p_location.getPitch());
             m_spawn = true;
             l_world.addEntity(l_customEntity, CreatureSpawnEvent.SpawnReason.NATURAL);
+            return (l_customEntity);
         }
         catch (Exception exception)
         {
-            Bukkit.getLogger().warning(toString() + ": " + exception.toString() + ": " + exception.getMessage());
+            Bukkit.getLogger().warning("CustomSpawner.Spawn" + ": " + exception.toString() + ": " + exception.getMessage());
         }
+        return null;
     }
 }

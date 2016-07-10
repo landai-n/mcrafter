@@ -1,5 +1,7 @@
 package net.mcrafter.survival;
 
+import net.mcrafter.survival.Creature.CustomSpawner;
+import net.mcrafter.survival.Creature.NewZombie;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
@@ -43,10 +45,13 @@ public class MonsterDeathListener implements Listener
 
             for (int i = 0; i < l_random; ++i)
             {
-                Zombie l_baby = (Zombie) p_zombie.getWorld().spawnEntity(p_zombie.getLocation(), EntityType.ZOMBIE);
+                NewZombie l_baby = (NewZombie)CustomSpawner.Spawn(EntityType.ZOMBIE, p_zombie.getLocation());
 
-                l_baby.setBaby(true);
-                l_baby.setMaxHealth(l_baby.getMaxHealth() * 0.1);
+                if (l_baby != null)
+                {
+                    l_baby.setBaby(true);
+                    l_baby.setMaxHealth(l_baby.getMaxHealth() * 0.1);
+                }
             }
         }
     }
