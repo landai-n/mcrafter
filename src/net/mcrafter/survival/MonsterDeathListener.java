@@ -37,7 +37,7 @@ public class MonsterDeathListener implements Listener
     {
         if (!p_zombie.isBaby())
         {
-            int l_random = (int)Math.rint(Math.random()) % 4;
+            int l_random = (int)(Math.random() * 3 + 1);
 
             Bukkit.getLogger().info("Launch zombie minion dice: " + l_random);
 
