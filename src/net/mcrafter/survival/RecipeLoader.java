@@ -60,6 +60,11 @@ class RecipeLoader
         AddShapelessCraftRecipe(Material.GOLD_LEGGINGS, Material.GOLD_INGOT, 2);
         AddShapelessCraftRecipe(Material.GOLD_HELMET, Material.GOLD_INGOT, 2);
         AddShapelessCraftRecipe(Material.GOLD_BOOTS, Material.GOLD_INGOT, 1);
+
+        AddShapelessCraftRecipe(Material.LEATHER_CHESTPLATE, Material.LEATHER, 3);
+        AddShapelessCraftRecipe(Material.LEATHER_LEGGINGS, Material.LEATHER, 2);
+        AddShapelessCraftRecipe(Material.LEATHER_HELMET, Material.LEATHER, 2);
+        AddShapelessCraftRecipe(Material.LEATHER_BOOTS, Material.LEATHER, 1);
     }
 
     void LoadImmortalCraft()
