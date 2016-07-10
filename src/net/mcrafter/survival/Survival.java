@@ -3,6 +3,7 @@ package net.mcrafter.survival;
 import com.rit.sucy.EnchantPlugin;
 import com.rit.sucy.EnchantmentAPI;
 import net.mcrafter.survival.Creature.CustomCreature;
+import net.mcrafter.survival.Creature.CustomSpawner;
 import org.bukkit.World;
 
 public class Survival extends EnchantPlugin
@@ -29,6 +30,7 @@ public class Survival extends EnchantPlugin
             if (l_world.getEnvironment() != World.Environment.THE_END)
                 l_world.setMonsterSpawnLimit(l_world.getMonsterSpawnLimit() * 3);
 
+        getServer().getPluginManager().registerEvents(new CustomSpawner(), this);
         getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
         getServer().getPluginManager().registerEvents(new NaturalEventListener(), this);
         getServer().getPluginManager().registerEvents(new MonsterAIListener(), this);

@@ -20,6 +20,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Map;
 
+
 public enum CustomCreature
     {
         ZOMBIE("Zombie", 54, EntityType.ZOMBIE, EntityZombie.class, NewZombie.class);
@@ -58,6 +59,14 @@ public enum CustomCreature
 
         public Class<? extends EntityInsentient> getCustomClass(){
             return this.customClass;
+        }
+
+        public static Class<? extends EntityInsentient> GetCustomClass(EntityType p_type)
+        {
+            for (CustomCreature l_custom : values())
+                if (l_custom.getEntityType() == p_type)
+                    return l_custom.getCustomClass();
+            return (null);
         }
 
         public static void registerEntities()
@@ -148,4 +157,3 @@ public enum CustomCreature
             return (true);
         }
     }
-
