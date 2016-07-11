@@ -26,8 +26,8 @@ public class CustomSpawner implements Listener
             m_spawn = false;
             return;
         }
-        Spawn(p_spawnEvent.getEntityType(), p_spawnEvent.getLocation());
-        p_spawnEvent.getEntity().remove();
+        if (Spawn(p_spawnEvent.getEntityType(), p_spawnEvent.getLocation()) != null)
+            p_spawnEvent.getEntity().remove();
     }
 
     public static Entity Spawn(EntityType p_type, Location p_location)

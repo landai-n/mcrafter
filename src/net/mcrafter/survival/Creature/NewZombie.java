@@ -12,8 +12,6 @@ public class NewZombie extends EntityZombie
     public NewZombie(World p_world)
     {
         super(p_world);
-        setCustomName("Michel");
-        setCustomNameVisible(true);
         this.targetSelector.a(2,
                 new PathfinderGoalNearestAttackableTarget(this, EntityHuman.class, 70, true, true, null));
     }
