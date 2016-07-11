@@ -19,8 +19,9 @@ public class Survival extends EnchantPlugin
     public void onEnable()
     {
         CustomCreature.registerEntities();
+        EnchantmentAPI.registerCustomEnchantment(new AmmoEnchantment());
         EnchantmentAPI.registerCustomEnchantment(new ImmortalEnchantment());
-        EnchantmentAPI.registerCustomEnchantment(new ZeusEnchantment());
+        EnchantmentAPI.registerCustomEnchantment(new ZeusEnchantment(this));
         EnchantmentAPI.registerCustomEnchantment(new ExplosiveEnchantment(this));
         EnchantmentAPI.registerCustomEnchantment(new TimeEnchantment(this));
         EnchantmentAPI.registerCustomEnchantment(new FlyEnchantment());

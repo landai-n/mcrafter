@@ -24,6 +24,7 @@ class RecipeLoader
 
         LoadStuffUncrafts();
         LoadImmortalCraft();
+        LoadAmmoCraft();
     }
 
     private void LoadStuffUncrafts()
@@ -96,6 +97,16 @@ class RecipeLoader
         Bukkit.getServer().addRecipe(l_immortal1);
         Bukkit.getServer().addRecipe(l_immortal3);
         Bukkit.getServer().addRecipe(l_immortal5);
+    }
+
+    void LoadAmmoCraft()
+    {
+        ItemStack l_output = new ItemStack(Material.BOW);
+
+        EnchantmentAPI.getEnchantment("Ammo").addToItem(l_output, 8);
+        ShapelessRecipe l_recipe = new ShapelessRecipe(l_output);
+        l_recipe.addIngredient(Material.BOW).addIngredient(2, Material.BLAZE_POWDER);
+        Bukkit.getServer().addRecipe(l_recipe);
     }
 
     private void AddShapelessCraftRecipe(Material p_input, Material p_output, int p_outputNb)

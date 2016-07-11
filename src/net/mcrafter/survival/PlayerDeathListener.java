@@ -18,6 +18,7 @@ import org.bukkit.util.Vector;
 
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 import java.util.Stack;
 
 public class PlayerDeathListener implements Listener {
@@ -43,13 +44,13 @@ public class PlayerDeathListener implements Listener {
             {
                 int l_level = EnchantmentAPI.getItemEnchantmentLevel(l_item, "Immortal");
 
-                if (l_level > 0)
+                if (l_level-- > 0)
                 {
-                    l_level--;
-                    EnchantmentAPI.removeEnchantments(l_item);
+                    CustomEnchantment l_immortal = EnchantmentAPI.getEnchantment("Immortal");
 
+                    l_immortal.removeFromItem(l_item);
                     if (l_level > 0)
-                        EnchantmentAPI.getEnchantment("Immortal").addToItem(l_item, l_level);
+                        l_immortal.addToItem(l_item, l_level);
                     l_saved.add(new ItemStack(l_item));
                 }
             }
